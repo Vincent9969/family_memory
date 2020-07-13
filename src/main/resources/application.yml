@@ -1,0 +1,44 @@
+server:
+  port: 8089
+  max-http-header-size: 102400
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    # templates中的所有文件后缀名，如/templates/main.html
+    suffix: .html
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url:  jdbc:mysql://111.229.115.84:3306/family?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      stat-view-servlet:
+        allow: true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+#    data:
+#      mongodb:
+#        uri: ${yapi_mongodb_uri:mongodb://47.113.96.151:27017/yapi}
+mybatis:
+  mapper-locations: classpath*:mapper/**/*.xml
+
+mapper:
+  not-empty: true
+  safeDelete: true
+  safeUpdate: true
+
+#小程序配置
+wx:
+  APPID: wxb6d2414ddac0e20e
+  SECRET: bbd54928bb738e75abdd8ef8347d1e9e

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.family.jh.mapper.JhInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.family.jh.model.JhInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="XH" property="xh" jdbcType="VARCHAR" />
+    <result column="CJSJ" property="cjsj" jdbcType="TIMESTAMP" />
+    <result column="JHBT" property="jhbt" jdbcType="VARCHAR" />
+    <result column="JHNR" property="jhnr" jdbcType="VARCHAR" />
+    <result column="CJRXH" property="cjrxh" jdbcType="VARCHAR" />
+    <result column="SJSX" property="sjsx" jdbcType="CHAR" />
+    <result column="SXSJ" property="sxsj" jdbcType="TIMESTAMP" />
+    <result column="JHSFYQ" property="jhsfyq" jdbcType="CHAR" />
+    <result column="DSC" property="desc" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

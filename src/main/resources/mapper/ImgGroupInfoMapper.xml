@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.family.img.mapper.ImgGroupInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.family.img.model.ImgGroupInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="XH" property="xh" jdbcType="VARCHAR" />
+    <result column="CJSJ" property="cjsj" jdbcType="TIMESTAMP" />
+    <result column="ZPZMC" property="zpzmc" jdbcType="VARCHAR" />
+    <result column="ZPCFMIMGURL" property="zpcfmimgurl" jdbcType="VARCHAR" />
+    <result column="CJRXH" property="cjrxh" jdbcType="VARCHAR" />
+    <result column="HOMEXH" property="homexh" jdbcType="VARCHAR" />
+    <result column="PXH" property="pxh" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="queryImgGroupPageList" resultType="com.family.img.model.ImgGroupInfo">
+    SELECT IMGGROUP.*,ifnull(IMG.IMGNUM,0) as IMGNUM
+    FROM T_IMG_GROUP_INFO IMGGROUP
+    LEFT JOIN (SELECT COUNT(ZPZXH) IMGNUM,ZPZXH FROM T_IMG_INFO GROUP BY ZPZXH )  IMG ON IMG.ZPZXH=IMGGROUP.XH
+    WHERE HOMEXH=#{homexh} ORDER BY CJSJ DESC
+
+  </select>
+
+
+
+</mapper>

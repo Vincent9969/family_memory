@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.family.user.mapper.HomeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.family.user.model.HomeInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="XH" property="xh" jdbcType="VARCHAR" />
+    <result column="HONENAME" property="honename" jdbcType="VARCHAR" />
+    <result column="CJSJ" property="cjsj" jdbcType="TIMESTAMP" />
+    <result column="DSC" property="desc" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

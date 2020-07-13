@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.family.memory.mapper.PlHfInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.family.memory.model.PlHfInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="XH" property="xh" jdbcType="VARCHAR" />
+    <result column="MEMORYXH" property="memoryxh" jdbcType="VARCHAR" />
+    <result column="PLXH" property="plxh" jdbcType="VARCHAR" />
+    <result column="PLRXH" property="plrxh" jdbcType="VARCHAR" />
+    <result column="HFRXH" property="hfrxh" jdbcType="VARCHAR" />
+    <result column="HFNR" property="hfnr" jdbcType="VARCHAR" />
+    <result column="CJSJ" property="cjsj" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="getPlHfInfoList" resultType="com.family.memory.model.PlHfInfo">
+    SELECT PLHF.*,PLR.NICKNAME AS PLRNAME,HFR.NICKNAME AS HFRNAME,HFR.HEADURL AS HFRHEADURL
+    FROM T_PL_HF_INFO PLHF
+    LEFT JOIN T_USER PLR ON PLR.XH=PLHF.PLRXH
+    LEFT JOIN T_USER HFR ON HFR.XH=PLHF.HFRXH
+    WHERE PLXH=#{plxh} ORDER BY PLHF.CJSJ DESC
+  </select>
+</mapper>

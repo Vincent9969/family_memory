@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.family.memory.mapper.MemoryInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.family.memory.model.MemoryInfo" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="XH" property="xh" jdbcType="VARCHAR" />
+    <result column="JYFSSJ" property="jyfssj" jdbcType="DATE" />
+    <result column="JYNR" property="jynr" jdbcType="VARCHAR" />
+    <result column="CJSJ" property="cjsj" jdbcType="TIMESTAMP" />
+    <result column="IMGURLS" property="imgurls" jdbcType="VARCHAR" />
+    <result column="FBRXH" property="fbrxh" jdbcType="VARCHAR" />
+    <result column="PXH" property="pxh" jdbcType="INTEGER" />
+  </resultMap>
+
+  <select id="queryMemoryPageList" resultType="com.family.memory.model.MemoryInfo">
+    SELECT MEMORY.*,U.HEADURL,U.NICKNAME,IFNULL(PL.TYPE,0) ISLIKE
+    FROM T_MEMORY_INFO MEMORY
+    LEFT JOIN T_USER U ON U.XH=MEMORY.FBRXH
+    LEFT JOIN T_HOME_INFO HOME ON HOME.XH=U.HOMEGROUPXH
+    LEFT JOIN T_MEMORY_PL_INFO PL ON PL.MEMORYXH=MEMORY.XH AND PL.PLRXH=U.XH AND PL.TYPE=1
+    WHERE HOME.XH=#{homeXh} ORDER BY MEMORY.CJSJ DESC
+  </select>
+</mapper>
